@@ -11,7 +11,7 @@ eps = 0.001
 
 def bin_search(f, start, end):
 
-    if (end - start) < eps: return start + (start + end)/2
+    if (end - start) < eps: return start + (start - end)/2
 
     if abs(f(start)) < eps:  return start
 
