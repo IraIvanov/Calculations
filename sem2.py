@@ -140,12 +140,12 @@ b_0 = eps**3 / 3
 m_func = lambda x: 1/m.sqrt(x)
 
 num = 200
-
 end = b_0
 start = 0
 integral_part1 = integral_right_rec(m_func, num)
 start = b_0
 end = 1
 integral_part2 = integral_right_rec(m_func, num)
-integral = integral_part1 + integral_part2
-print("Несобственный интеграл", integral)
+integral = integral_part2
+ref = 2
+print("Несобственный интеграл", integral, 2)

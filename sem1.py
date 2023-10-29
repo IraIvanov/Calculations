@@ -1,5 +1,6 @@
 import matplotlib.pyplot as mpl
 import math as m
+import numpy as np
 
 def dif_h1(func, h):
 
@@ -39,8 +40,8 @@ def dif_2_h2(func, h):
         dif_i = (func[i - 1] + func[i + 1] - 2*func[i])/(h*h)
         dif.append(dif_i)
 
-    dif_0 = (2*func[0] - 5*func[1] + 4*func[2] - func[3])/(2*h*h)
-    dif_n = (-2*func[-1] + 5*func[-2] - 4*func[-3] + func[-4])/(2*h)
+    dif_0 = (-2*func[0] + 5*func[1] - 4*func[2] + func[3])/(h*h)
+    dif_n = (2*func[-1] - 5*func[-2] + 4*func[-3] - func[-4])/(h*h)
     dif = [dif_0] + dif + [dif_n]
 
     return dif
@@ -55,7 +56,7 @@ def m_dif(x):
 
 def m_dif_2(x):
 
-    return - 4*m.cos(x)*m.sin(x)
+    return -4*m.cos(x)*m.sin(x)
 
 def main(h, num):
 
@@ -93,7 +94,7 @@ dif_h2_lst = []
 dif_2_lst = []
 
 
-for i in range(4):
+for i in range(6):
 
     h = m.pi/num
     dif_h_1, dif_h_2, dif_2 = main(h, num)
@@ -105,5 +106,11 @@ for i in range(4):
 
 fig, ax = mpl.subplots()
 ax.plot(h_lst, dif_h1_lst, '-', h_lst, dif_h2_lst, '--', h_lst, dif_2_lst, '-.')
+k, b = np.polyfit(h_lst, dif_h1_lst, 1)
+print(k, b)
+k, b = np.polyfit(h_lst, dif_h2_lst, 1)
+print(k, b)
+k, b = np.polyfit(h_lst, dif_2_lst, 1)
+print(k, b)
 mpl.savefig("plot")
     
