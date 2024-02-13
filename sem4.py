@@ -64,7 +64,7 @@ def jacobian(x):
 
 def NonLinear():
 
-    x_0 = [1, 2, 2]
+    x_0 = [3, 2, 2]
 
     for i in range(100):
 

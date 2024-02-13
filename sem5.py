@@ -107,7 +107,7 @@ mpl.show()
 
 n = 5
 end = 1
-r_k = Euler_1(n)
+r_k = R_K(n)
 r_k1 = []
 r_k2 = []
 ref1 = []
@@ -125,9 +125,41 @@ for i in range(n):
     steps.append(tau*i)
 
 mpl.plot(steps, r_k1, 'bo-', label=('метод Рунге-Куты 4-го порядка x'))
-#mpl.plot(steps, r_k2, 'go-', label=('метод Рунге-Куты 4-го порядка y'))
+mpl.plot(steps, r_k2, 'go-', label=('метод Рунге-Куты 4-го порядка y'))
 mpl.plot(steps, ref1, 'ro-', label=('Рещение x'))
-#mpl.plot(steps, ref2, 'o-', label=('Рещение y'))
+mpl.plot(steps, ref2, 'o-', label=('Рещение y'))
+mpl.grid()
+mpl.xlabel('Шаг')
+mpl.ylabel('Значение в точке')
+mpl.title('График решений')
+mpl.legend(loc='best', bbox_to_anchor = (1, -0.1))
+mpl.tight_layout()
+mpl.show()
+
+
+n = 5
+end = 1
+r_k = Euler_1(n)
+r_k1 = []
+r_k2 = []
+ref1 = []
+ref2 = []
+tau = (end - start)/n
+steps = []
+
+for i in range(n):
+
+    ans = Actual_ans(tau*i)
+    ref1.append(ans[0])
+    ref2.append(ans[1])
+    r_k1.append(r_k[i][0])
+    r_k2.append(r_k[i][1])
+    steps.append(tau*i)
+
+mpl.plot(steps, r_k1, 'bo-', label=('метод Эйлера 1-го порядка x'))
+mpl.plot(steps, r_k2, 'go-', label=('метод Эйлера 1-го порядка y'))
+mpl.plot(steps, ref1, 'ro-', label=('Рещение x'))
+mpl.plot(steps, ref2, 'o-', label=('Рещение y'))
 mpl.grid()
 mpl.xlabel('Шаг')
 mpl.ylabel('Значение в точке')
